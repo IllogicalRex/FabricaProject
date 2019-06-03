@@ -1,0 +1,49 @@
+<br>
+<div class="content col-lg-12 col-centered">
+    <div class="card mx-auto float-right" style="width: 70rem;">
+
+        <div class="card-header rounded">
+            Recursos
+            <button type=" button " title="Craer un proyecto nuevo" [routerLink]="['/newrec']" class="btn waves-effect btn btn-secondary float-right">
+                <span class="oi oi-plus"></span>
+                Nuevo
+            </button>
+        </div>
+        <div class="mx-auto float-right" style="width: 1000px;">
+            <br>
+            <table class="table  table-hover" data-spy="scroll">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">LastName</th>
+                        <th scope="col">Position</th>
+                        <th scope="col">Email</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let rec of resource">
+
+                        <td>{{rec.rec_ID}}</td>
+                        <td>{{rec.name}}</td>
+                        <td>{{rec.lastName}}</td>
+                        <td>{{rec.position}}</td>
+                        <td>{{rec.email}}</td>
+                        <td>
+                            <div class="text-right">
+                                <button type=" button " title="Eliminar recurso" class="btn waves-effect btn " (click)="delete(rec.rec_ID)">
+                                              <span class="oi oi-x"></span>
+                                      </button>
+                                <button type=" button " title="Modificar recurso" class="btn waves-effect btn  " [routerLink]="['/updaterec', rec.rec_ID]">
+                                          <span class="oi oi-reload"></span>
+                                          </button>
+                            </div>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { URL_SERVICIOS } from 'src/app/config/config';
+import { ProyectComponent } from '../../pages/proyect/showprojects/proyect.component';
+import { Project } from 'src/app/models/projects.model';
+import { projection } from '@angular/core/src/render3';
+import { element } from 'protractor';
+import { Resource } from 'src/app/models/resource.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ResourceService {
+  element: HTMLElement;
+  resource: Resource;
+  constructor(public http: HttpClient) {
+
+  }
+
+  cargarResources() {
+    // tslint:disable-next-line:prefer-const
+    let url = URL_SERVICIOS + '/HResources';
+    return this.http.get(url)
+        .pipe(map((resp: any) => resp));
+  }
+
+  // tslint:disable-next-line:variable-name
+  cargarResourceByID(pro_ID: number) {
+    // tslint:disable-next-line:prefer-const
+    let url = URL_SERVICIOS + '/HResources/' + pro_ID;
+    return this.http.get(url)
+        .pipe(map((resp: any) => resp));
+  }
+
+
+
+  saveResource(resource: Resource) {
+    // tslint:disable-next-line:prefer-const
+    let url = URL_SERVICIOS + '/HResources';
+    return this.http.post(url, resource)
+    .pipe(map((resp: any) => resp));
+  }
+
+  // tslint:disable-next-line:variable-name
+  deleteResources(pro_ID: number) {
+    // tslint:disable-next-line:prefer-const
+    let url = URL_SERVICIOS + '/HResources/' + pro_ID;
+    return this.http.delete(url)
+    .pipe(map((resp: any) => resp));
+  }
+
+  // tslint:disable-next-line:variable-name
+  updateResources(rec_ID: number, body: any) {
+    // tslint:disable-next-line:prefer-const
+    let url = URL_SERVICIOS + '/HResources/' + rec_ID;
+    return this.http.put(url, body).pipe(map((res: any)  => {
+      console.log(res);
+    }));
+  }
+
+}

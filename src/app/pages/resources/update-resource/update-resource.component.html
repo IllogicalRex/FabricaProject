@@ -1,0 +1,32 @@
+<br>
+<div class="content ">
+
+    <div class="card col-md-7 row-md-14 mx-auto">
+        <br>
+        <h5 class="card-header">Featured</h5>
+        <section class="mx-auto col-md-11 ">
+            <form ngNativeValidate>
+
+                <div class="form-group ">
+                    <label for="inputEmail4">Nombre:</label>
+                    <input [(ngModel)]="resource.name" name="name" type="text" class="form-control" id="inputNombre" placeholder="Nombre">
+                </div>
+                <div class="form-group ">
+                    <label for="inputPassword4">Last Name: </label>
+                    <input [(ngModel)]="resource.lastName" name="resourceLastName" type="text" class="form-control" id="inputStartDate" placeholder="Fecha de Inicio">
+
+                </div>
+                <div class="form-group ">
+                    <label for="inputAddress">Position:</label>
+                    <input [(ngModel)]="resource.position" name="resourcePosition" type="text" class="form-control" id="inputEndDate" placeholder="Fecha de finalización">
+                </div>
+                <div class="form-group ">
+                    <label for="inputAddress2">Email: </label>
+                    <input [(ngModel)]="resource.email" name="resourceEmail" type="email" class="form-control" id="inputLeader" placeholder="Líder de proyecto">
+                </div>
+                <button (click)="save()" type="submit" class="btn btn-primary col-md-2">Guardar</button>
+            </form>
+        </section>
+        <br>
+    </div>
+</div>
