@@ -1,18 +1,15 @@
 <!-- Page content -->
-<br>
-<div class="content col-lg-12 col-centered">
-    <div class="card mx-auto float-right" style="width: 70rem;">
-        <div class="card-header rounded">
-            {{header}}
-            <button type=" button " title="Craer un proyecto nuevo" [routerLink]="['/newproject']" class="btn waves-effect btn btn-secondary float-right">
-                            <span class="oi oi-plus"></span>
-                            Nuevo
-                        </button>
-        </div>
-        <div class="card-body">
-
-            <div class="mx-auto" style="width: 1000px;">
-
+<section class="wrapper">
+    <div class="content">
+        <div class="card ">
+            <div class="card-header rounded">
+                {{header}}
+                <button type=" button " title="Craer un proyecto nuevo" [routerLink]="['/newproject']" class="btn waves-effect btn btn-secondary float-right">
+                                <span class="oi oi-plus"></span>
+                                Nuevo
+                            </button>
+            </div>
+            <div class="card-body">
                 <table class="table  table-hover" data-spy="scroll">
                     <thead class="thead-dark">
                         <tr>
@@ -35,11 +32,11 @@
                             <td>
                                 <div class="text-right">
                                     <button type=" button " title="Eliminar proyecto" class="btn waves-effect btn " (click)="deleteProject(pro.pro_ID)">
-                                                    <span class="oi oi-x"></span>
-                                            </button>
-                                    <button type=" button " title="Modificar proyecto" [routerLink]="['/updateproject',pro.pro_ID]" class="btn waves-effect btn  ">
-                                                <span class="oi oi-reload"></span>
+                                                        <span class="oi oi-x"></span>
                                                 </button>
+                                    <button type=" button " title="Modificar proyecto" [routerLink]="['/updateproject',pro.pro_ID]" class="btn waves-effect btn  ">
+                                                    <span class="oi oi-reload"></span>
+                                                    </button>
                                 </div>
 
                             </td>
@@ -50,25 +47,18 @@
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
                             <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
+                                <a class="page-link" (click)="updatePageRes()" aria-label="Previous">Previou</a>
                             </li>
-                            <li class="page-item"><a class="page-link" (click)="updatePageRes()" [routerLink]="[newUrl]">{{currentPage-1}}</a></li>
-                            <li class="page-item"><a class="page-link" [routerLink]="['/Project/',currentPage]">{{currentPage}}</a></li>
-                            <li class="page-item"><a class="page-link" (click)="updatePageSum()" [routerLink]="[newUrl]">{{currentPage+1}}</a></li>
                             <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                    <span class="sr-only">Next</span>
-                                </a>
+                                <a class="page-link">{{pagination.numberPage}}</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" (click)="updatePageSum()">Next</a>
                             </li>
                         </ul>
                     </nav>
                 </div>
             </div>
         </div>
-
     </div>
-</div>
+</section>

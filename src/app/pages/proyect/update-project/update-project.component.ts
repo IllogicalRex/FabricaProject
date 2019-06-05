@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../../../services/project/project.service';
 import { ActivatedRoute } from '@angular/router';
 import { Project } from 'src/app/models/projects.model';
-import { dateFormatPipe } from '../pipes/format-date.pipe';
+import { dateFormatPipe } from '../../pipes/format-date.pipe';
 import swal from 'sweetalert';
 @Component({
   selector: 'app-update-project',

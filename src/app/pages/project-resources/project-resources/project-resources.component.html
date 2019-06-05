@@ -1,57 +1,43 @@
-<br>
-<div class="content col-lg-12 col-centered">
-    <div class="card mx-auto float-right" style="width: 70rem;">
-
-        <div class="card-header rounded">
-            <div class="row">
-                <div class="col-sm">
-                    <p class="h5">Proyectos y Recursos Asignados</p>
-                </div>
-                <div class="col-sm">
-                    <button type=" button " title="Craer un proyecto nuevo" [routerLink]="['/newrec']" class="btn waves-effect btn btn-secondary float-right">
-                    <span class="oi oi-plus"></span>
-                    Nuevo
-                </button>
-                </div>
+<section class="wrapper">
+    <div class="content ">
+        <div class="card ">
+            <div class="card-header rounded">
+                Proyectos y Recursos Asignados
             </div>
+            <div class="card-body">
+                <table class="table  table-hover" data-spy="scroll">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Project ID</th>
+                            <th scope="col">Project Name</th>
+                            <th scope="col">Resource ID</th>
+                            <th scope="col">Resource Name</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let prorec of proRec">
 
-
-
-        </div>
-        <br>
-        <div class="mx-auto float-right" style="width: 1000px;">
-
-            <table class="table  table-hover" data-spy="scroll">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">Project ID</th>
-                        <th scope="col">Project Name</th>
-                        <th scope="col">Resource ID</th>
-                        <th scope="col">Resource Name</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let prorec of proRec">
-
-                        <td>{{prorec.pro_ID}}</td>
-                        <td>{{prorec.nameProject}}</td>
-                        <td>{{prorec.rec_ID}}</td>
-                        <td>{{prorec.nameResource}}</td>
-                        <td>
-                            <div class="text-right">
-                                <button type=" button " title="Eliminar recurso" class="btn waves-effect btn ">
-                                            <span class="oi oi-x"></span>
-                                    </button>
-                                <button type=" button " title="Modificar recurso" class="btn waves-effect btn  " [routerLink]="['/updaterec', prorec.rec_ID]">
-                                        <span class="oi oi-reload"></span>
+                            <td>{{prorec.pro_ID}}</td>
+                            <td>{{prorec.nameProject}}</td>
+                            <td>{{prorec.rec_ID}}</td>
+                            <td>{{prorec.nameResource}}</td>
+                            <td>
+                                <div class="text-right">
+                                    <button type=" button " title="Eliminar recurso" class="btn waves-effect btn ">
+                                                <span class="oi oi-x"></span>
                                         </button>
-                            </div>
+                                    <button type=" button " title="Modificar recurso" class="btn waves-effect btn  " [routerLink]="['/updaterec', prorec.rec_ID]">
+                                                <span class="oi oi-reload"></span>
+                                                </button>
+                                </div>
 
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
             <div class="content col-lg-17 ">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
@@ -77,4 +63,5 @@
 
         </div>
     </div>
-</div>
+
+</section>

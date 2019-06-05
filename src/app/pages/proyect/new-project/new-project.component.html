@@ -1,23 +1,38 @@
-<section class="mx-auto col-md-6">
-    <form #f="ngForm" ngNativeValidate (ngSubmit)="obtenerDatos(f)">
+<section class="wrapper">
+    <div class="content ">
+        <div class="card ">
+            <div class="card-header rounded">
+                Nuevo projecto
+            </div>
+            <br>
+            <section class="content mx-auto " style="width: 700px;">
+                <form #f="ngForm" ngNativeValidate (ngSubmit)="obtenerDatos(f)">
 
-        <div class="form-group ">
-            <label for="inputEmail4">Nombre:</label>
-            <input [(ngModel)]="project.name" name="name" type="text" class="form-control" id="inputNombre" placeholder="Nombre">
-        </div>
-        <div class="form-group ">
-            <label for="inputPassword4">Fecha de inicio: </label>
-            <input [(ngModel)]="project.startDate" name="startDate" type="date" class="form-control" id="inputStartDate" placeholder="Fecha de Inicio">
+                    <div class="form-group ">
+                        <label for="inputEmail4">Nombre:</label>
+                        <input [(ngModel)]="project.name" name="name" type="text" class="form-control" id="inputNombre" placeholder="Nombre">
+                    </div>
+                    <div class="form-group ">
+                        <label for="inputPassword4">Fecha de inicio: </label>
+                        <input [(ngModel)]="project.startDate" name="startDate" type="date" class="form-control" id="inputStartDate" placeholder="Fecha de Inicio">
+
+                    </div>
+                    <div class="form-group ">
+                        <label for="inputAddress">Fecha de finalización:</label>
+                        <input [(ngModel)]="project.endDate" name="endDate" type="date" class="form-control" id="inputEndDate" placeholder="Fecha de finalización">
+                    </div>
+                    <div class="form-group ">
+                        <label for="inputAddress2">Líder de proyecto: </label>
+                        <input [(ngModel)]="project.proyectLeader" name="projectLeader" type="text" class="form-control" id="inputLeader" placeholder="Líder de proyecto">
+                    </div>
+
+                    <button (click)="guardar()" type="submit" class="btn btn-primary col-md-2">Guardar</button>
+
+                    <br>
+                </form>
+            </section>
 
         </div>
-        <div class="form-group ">
-            <label for="inputAddress">Fecha de finalización:</label>
-            <input [(ngModel)]="project.endDate" name="endDate" type="date" class="form-control" id="inputEndDate" placeholder="Fecha de finalización">
-        </div>
-        <div class="form-group ">
-            <label for="inputAddress2">Líder de proyecto: </label>
-            <input [(ngModel)]="project.proyectLeader" name="projectLeader" type="text" class="form-control" id="inputLeader" placeholder="Líder de proyecto">
-        </div>
-        <button (click)="guardar()" type="submit" class="btn btn-primary col-md-2">Guardar</button>
-    </form>
+
+    </div>
 </section>

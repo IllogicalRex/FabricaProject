@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from 'src/app/config/config';
 import { Resource } from 'src/app/models/resource.model';
 import { ProjectResources } from '../../models/project-resources/project-resources.model';
+import { Asign } from '../../models/project-resources/project-resource.model';
+import { Pagination } from 'src/app/models/pagination.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,16 +24,16 @@ export class ProjectsResourcesService {
         .pipe(map((resp: any) => resp));
   }
 
-  loadProjectsWithoutResources() {
+  loadProjectsWithoutResources(body: Pagination) {
     // tslint:disable-next-line:prefer-const
-    let url = URL_SERVICIOS + '/projectsresources/withoutres';
+    let url = URL_SERVICIOS + '/projectsresources/withoutrec?currentPage=' + body.numberPage + '&sizeData=' + body.sizeData;
     return this.http.get(url)
         .pipe(map((resp: any) => resp));
   }
 
-  loadResourcesWithoutProjects() {
+  loadResourcesWithoutProjects(body: Pagination) {
     // tslint:disable-next-line:prefer-const
-    let url = URL_SERVICIOS + '/projectsresources/withoutpro';
+    let url = URL_SERVICIOS + '/projectsresources/withoutpro?currentPage=' + body.numberPage + '&sizeData=' + body.sizeData;
     return this.http.get(url)
         .pipe(map((resp: any) => resp));
   }
@@ -46,10 +48,10 @@ export class ProjectsResourcesService {
 
 
 
-  saveProjectsResources(resource: Resource) {
+  saveProjectsResources(proRec: Asign) {
     // tslint:disable-next-line:prefer-const
-    let url = URL_SERVICIOS + '/HResources';
-    return this.http.post(url, resource)
+    let url = URL_SERVICIOS + '/ProjectsResources';
+    return this.http.post(url, proRec)
     .pipe(map((resp: any) => resp));
   }
 

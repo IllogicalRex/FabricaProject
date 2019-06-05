@@ -25,9 +25,9 @@ export class ProjectService {
         .pipe(map((resp: any) => resp));
   }
 
-  cargarProyectosPage(page: number) {
+  cargarProyectosPage(body: Pagination) {
     // tslint:disable-next-line:prefer-const
-    let url = URL_SERVICIOS + '/project/' + page;
+    let url = URL_SERVICIOS + '/project?currentPage=' + body.numberPage + '&sizeData=' + body.sizeData;
     return this.http.get(url)
         .pipe(map((resp: any) => resp));
   }
@@ -35,7 +35,7 @@ export class ProjectService {
   // tslint:disable-next-line:variable-name
   cargarProyectosByID(pro_ID: number) {
     // tslint:disable-next-line:prefer-const
-    let url = URL_SERVICIOS + '/project/' + pro_ID;
+    let url = URL_SERVICIOS + '/project/byid/' + pro_ID;
     return this.http.get(url)
         .pipe(map((resp: any) => resp));
   }

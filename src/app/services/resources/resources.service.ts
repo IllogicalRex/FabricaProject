@@ -7,6 +7,7 @@ import { Project } from 'src/app/models/projects.model';
 import { projection } from '@angular/core/src/render3';
 import { element } from 'protractor';
 import { Resource } from 'src/app/models/resource.model';
+import { Pagination } from 'src/app/models/pagination.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +19,9 @@ export class ResourceService {
 
   }
 
-  cargarResources() {
+  loadResources(body: Pagination) {
     // tslint:disable-next-line:prefer-const
-    let url = URL_SERVICIOS + '/HResources';
+    let url = URL_SERVICIOS + '/HResources?currentPage=' + body.numberPage + '&sizeData=' + body.sizeData;
     return this.http.get(url)
         .pipe(map((resp: any) => resp));
   }

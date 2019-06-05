@@ -2,9 +2,11 @@ import { Component, OnInit, Pipe } from '@angular/core';
 import { ProjectService } from '../../../services/project/project.service';
 import Swal from 'sweetalert2';
 import { Project } from 'src/app/models/projects.model';
-import { dateFormatPipe } from '../pipes/format-date.pipe';
+import { dateFormatPipe } from '../../pipes/format-date.pipe';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProjectsResourcesService } from 'src/app/services/projects-resources/projects-resources.service';
+import { Pagination } from 'src/app/models/pagination.model';
+import { SIZE_DATA } from '../../../config/constants';
 
 
 
@@ -18,8 +20,8 @@ import { ProjectsResourcesService } from 'src/app/services/projects-resources/pr
 export class ProyectComponent implements OnInit {
   proyect: Project;
   header: string;
-  currentPage: number;
-  newUrl: string;
+  pagination: Pagination = new Pagination();
+  url: string;
   // tslint:disable-next-line:variable-name
   constructor(public _project: ProjectService,
               // tslint:disable-next-line:variable-name
@@ -28,25 +30,24 @@ export class ProyectComponent implements OnInit {
               // tslint:disable-next-line:variable-name
               public _proResService: ProjectsResourcesService,
               public activateRoute: ActivatedRoute) {
-                activateRoute.params.subscribe(params => {
-                  // tslint:disable-next-line:no-string-literal
-                  this.currentPage = params['currentPage'];
-                  console.log(this.currentPage);
+                this.activateRoute
+                .queryParams
+                .subscribe(params => {
+                  this.pagination.numberPage = +params.numberPage;
+                  this.pagination.sizeData = +params.sizeData;
+                 // this.url = '/project?numberPage=' + this.pagination.numberPage + '&sizeData=' + this.pagination.sizeData;
                 });
-               }
+                // this.body.sizeData = SIZE_DATA;
+              }
 
   ngOnInit() {
-    this.cargar();
-    this.currentPage = 1;
-    this.newUrl = '/project/' + this.currentPage;
+    this.load();
   }
 
-  cargar() {
-    console.log(this.router.url);
-    if ( this.router.url === ('/project/' + this.currentPage)) {
-      this._project.cargarProyectosPage(this.currentPage).subscribe((res: any) => {
+  /* load() {
+    if ( this.router.url === this.url) {
+      this._project.cargarProyectosPage(this.pagination).subscribe((res: any) => {
         this.proyect = res;
-        console.log(res);
         this.header = 'Proyectos';
       });
     } else
@@ -56,17 +57,35 @@ export class ProyectComponent implements OnInit {
         this.header = 'Proyectos sin recursos asignados';
       });
     }
+  } */
+
+  load() {
+      this._project.cargarProyectosPage(this.pagination).subscribe((res: any) => {
+        this.proyect = res;
+        this.header = 'Proyectos';
+      });
   }
 
   updatePageSum() {
-    this.currentPage = this.currentPage + 1;
-    console.log(this.currentPage);
-    this.cargar();
+    this.pagination.numberPage = this.pagination.numberPage + 1;
+    this.router.navigate(['/project'],
+    {
+      queryParams: {
+        numberPage: this.pagination.numberPage, sizeData: this.pagination.sizeData
+      }
+    });
+    this.ngOnInit();
   }
 
   updatePageRes() {
-    this.currentPage = this.currentPage - 1;
-    this.cargar();
+    this.pagination.numberPage = this.pagination.numberPage - 1;
+    this.router.navigate(['/project'],
+    {
+      queryParams: {
+        numberPage: this.pagination.numberPage, sizeData: this.pagination.sizeData
+      }
+    });
+    this.ngOnInit();
   }
 
   // tslint:disable-next-line:variable-name
@@ -83,8 +102,7 @@ export class ProyectComponent implements OnInit {
     .then((result) => {
       if (result.value) {
         this._project.deleteProject(pro_ID).subscribe((res: any) => {
-          console.log(res);
-          this.cargar();
+          this.load();
         });
         Swal.fire(
           'Deleted!',

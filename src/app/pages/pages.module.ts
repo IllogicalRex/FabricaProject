@@ -9,13 +9,15 @@ import { NewProjectComponent } from './proyect/new-project/new-project.component
 import { DeleteProjectComponent } from './proyect/delete-project/delete-project.component';
 import { RouterModule } from '@angular/router';
 import { UpdateProjectComponent } from './proyect/update-project/update-project.component';
-import { dateFormatPipe } from './proyect/pipes/format-date.pipe';
+import { dateFormatPipe } from './pipes/format-date.pipe';
 import { ResourcesComponent } from './resources/resources/resources.component';
 import { NewResourceComponent } from './resources/new-resource/new-resource.component';
 import { UpdateResourceComponent } from './resources/update-resource/update-resource.component';
 import { SidebarComponent } from '../shared/sidebar/sidebar.component';
 import { ProjectResourcesComponent } from './project-resources/project-resources/project-resources.component';
 import { ProjectWithoutResourcesComponent } from './project-resources/project-without-resources/project-without-resources.component';
+import { AsignResourceComponent } from './project-resources/asign-resource/asign-resource.component';
+import { ResourceWithoutProjectComponent } from './project-resources/resource-without-project/resource-without-project.component';
 @NgModule({
   declarations: [
     PagesComponent,
@@ -28,7 +30,9 @@ import { ProjectWithoutResourcesComponent } from './project-resources/project-wi
     NewResourceComponent,
     UpdateResourceComponent,
     ProjectResourcesComponent,
-    ProjectWithoutResourcesComponent
+    ProjectWithoutResourcesComponent,
+    AsignResourceComponent,
+    ResourceWithoutProjectComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +47,8 @@ import { ProjectWithoutResourcesComponent } from './project-resources/project-wi
     ResourcesComponent,
     NewResourceComponent,
     SidebarComponent,
-    ProjectResourcesComponent
+    ProjectResourcesComponent,
+    ProyectComponent
   ]
 })
 export class PagesModule { }

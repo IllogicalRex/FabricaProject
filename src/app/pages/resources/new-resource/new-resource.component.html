@@ -1,23 +1,33 @@
-<section class="mx-auto col-md-6">
-    <form #f="ngForm" ngNativeValidate (ngSubmit)="getData(f)">
+<section class="wrapper">
+    <div class="content ">
+        <div class="card ">
+            <div class="card-header rounded">
+                Nuevo Recurso
+            </div>
+            <br>
+            <section class="mx-auto col-md-6">
+                <form #f="ngForm" ngNativeValidate (ngSubmit)="getData(f)">
 
-        <div class="form-group ">
-            <label for="inputEmail4">Nombre:</label>
-            <input [(ngModel)]="resource.name" name="name" type="text" class="form-control" id="inputNombre" placeholder="Nombre">
-        </div>
-        <div class="form-group ">
-            <label for="inputPassword4">Last Name: </label>
-            <input [(ngModel)]="resource.lastName" name="resourceLastName" type="text" class="form-control" id="inputStartDate" placeholder="Fecha de Inicio">
+                    <div class="form-group ">
+                        <label for="inputEmail4">Nombre:</label>
+                        <input [(ngModel)]="resource.name" name="name" type="text" class="form-control" id="inputNombre" placeholder="Nombre">
+                    </div>
+                    <div class="form-group ">
+                        <label for="inputPassword4">Last Name: </label>
+                        <input [(ngModel)]="resource.lastName" name="resourceLastName" type="text" class="form-control" id="inputStartDate" placeholder="LastName">
 
+                    </div>
+                    <div class="form-group ">
+                        <label for="inputAddress">Position:</label>
+                        <input [(ngModel)]="resource.position" name="resourcePosition" type="text" class="form-control" id="inputEndDate" placeholder="Position">
+                    </div>
+                    <div class="form-group ">
+                        <label for="inputAddress2">Email: </label>
+                        <input [(ngModel)]="resource.email" name="resourceEmail" type="email" class="form-control" id="inputLeader" placeholder="Email">
+                    </div>
+                    <button (click)="save()" type="submit" class="btn btn-primary col-md-2">Guardar</button>
+                </form>
+            </section>
         </div>
-        <div class="form-group ">
-            <label for="inputAddress">Position:</label>
-            <input [(ngModel)]="resource.position" name="resourcePosition" type="text" class="form-control" id="inputEndDate" placeholder="Fecha de finalización">
-        </div>
-        <div class="form-group ">
-            <label for="inputAddress2">Email: </label>
-            <input [(ngModel)]="resource.email" name="resourceEmail" type="email" class="form-control" id="inputLeader" placeholder="Líder de proyecto">
-        </div>
-        <button (click)="save()" type="submit" class="btn btn-primary col-md-2">Guardar</button>
-    </form>
+    </div>
 </section>

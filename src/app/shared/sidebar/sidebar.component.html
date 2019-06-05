@@ -1,9 +1,39 @@
 <!-- The sidebar -->
-<div class="sidebar col-lg-2">
+<!-- <div class="sidebar col-lg-2">
     <a href="#home">Home</a>
     <a [routerLink]="['/project/', 1]">Projectos</a>
     <a [routerLink]="['/resource']">Recursos</a>
     <a [routerLink]="['/projectresources']">Proyectos y Recursos Asignados</a>
     <a [routerLink]="['/projectwhitoutrec']">Proyectos sin asignar</a>
     <a [routerLink]="['/resourceswhitoutpro']">recursos sin asignar</a>
-</div>
+</div> -->
+
+<aside>
+    <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu">
+            <li class="active">
+                <a class="" [routerLink]="['/project']" [queryParams]="{ numberPage: body.numberPage, sizeData: body.sizeData }">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li class="active">
+                <a class="" [routerLink]="['/resource']" [queryParams]="{ numberPage: body.numberPage, sizeData: body.sizeData }">
+                    <span>Resources</span>
+                </a>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <span>Recuros y projectos</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" [routerLink]="['/projectresources']">Asignados </a></li>
+                    <li><a class="" [routerLink]="['/projectwhitoutrec']" [queryParams]="{ numberPage: body.numberPage, sizeData: body.sizeData }">Proyectos sin Recursos</a></li>
+                    <li><a class="" [routerLink]="['/resourceswhitoutpro']" [queryParams]="{ numberPage: body.numberPage, sizeData: body.sizeData }">Recursos sin Proyectos</a></li>
+                </ul>
+            </li>
+        </ul>
+        <!-- sidebar menu end-->
+    </div>
+</aside>

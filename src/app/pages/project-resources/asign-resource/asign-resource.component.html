@@ -1,0 +1,44 @@
+<section class="wrapper">
+    <div class="content ">
+        <div class="card ">
+            <div class="card-header rounded">
+                Asignar recurso al proyecto: {{project.pro_ID}} - {{project.name}}
+            </div>
+            <div class="card-body">
+                <table class="table  table-hover" data-spy="scroll">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">LastName</th>
+                            <th scope="col">Position</th>
+                            <th scope="col">Email</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let rec of resource">
+
+                            <td>{{rec.rec_ID}}</td>
+                            <td>{{rec.name}}</td>
+                            <td>{{rec.lastName}}</td>
+                            <td>{{rec.position}}</td>
+                            <td>{{rec.email}}</td>
+                            <td>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" (click)="check(rec.rec_ID)" id="exampleCheck{{rec.rec_ID}}">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <button (click)="guardar()" type="submit" class="btn btn-primary col-md-2">Guardar</button>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</section>
