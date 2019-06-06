@@ -24,12 +24,9 @@
                             <td>{{prorec.nameResource}}</td>
                             <td>
                                 <div class="text-right">
-                                    <button type=" button " title="Eliminar recurso" class="btn waves-effect btn ">
-                                                <span class="oi oi-x"></span>
-                                        </button>
-                                    <button type=" button " title="Modificar recurso" class="btn waves-effect btn  " [routerLink]="['/updaterec', prorec.rec_ID]">
-                                                <span class="oi oi-reload"></span>
-                                                </button>
+                                    <button type=" button " title="Eliminar recurso" class="btn waves-effect btn" (click)="deleteResourceProject(prorec.pro_ID, prorec.rec_ID)">
+                                        <span class="oi oi-x"></span>
+                                    </button>
                                 </div>
 
                             </td>
@@ -59,9 +56,6 @@
                     </ul>
                 </nav>
             </div>
-
-
         </div>
     </div>
-
 </section>

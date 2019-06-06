@@ -33,7 +33,6 @@ export class ProjectWithoutResourcesComponent implements OnInit {
                   // Defaults to 0 if no query param provided.
                   this.pagination.numberPage = +params.numberPage;
                   this.pagination.sizeData = +params.sizeData;
-                  console.log(this.pagination.numberPage, this.pagination.sizeData);
                 });
                 // this.body.sizeData = SIZE_DATA;
               }
@@ -50,6 +49,7 @@ export class ProjectWithoutResourcesComponent implements OnInit {
 
   updatePageSum() {
     this.pagination.numberPage = this.pagination.numberPage + 1;
+
     this.router.navigate(['/projectwhitoutrec'],
     {
       queryParams: {

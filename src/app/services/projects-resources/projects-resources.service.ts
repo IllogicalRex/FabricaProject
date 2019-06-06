@@ -7,6 +7,8 @@ import { ProjectResources } from '../../models/project-resources/project-resourc
 import { Asign } from '../../models/project-resources/project-resource.model';
 import { Pagination } from 'src/app/models/pagination.model';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,7 +35,9 @@ export class ProjectsResourcesService {
 
   loadResourcesWithoutProjects(body: Pagination) {
     // tslint:disable-next-line:prefer-const
-    let url = URL_SERVICIOS + '/projectsresources/withoutpro?currentPage=' + body.numberPage + '&sizeData=' + body.sizeData;
+    let url = URL_SERVICIOS + '/projectsresources/withoutpro?currentPage=' +
+                                   body.numberPage + '&sizeData=' + body.sizeData;
+    console.log(url);
     return this.http.get(url)
         .pipe(map((resp: any) => resp));
   }
@@ -56,9 +60,9 @@ export class ProjectsResourcesService {
   }
 
   // tslint:disable-next-line:variable-name
-  deleteProjectsResources(pro_ID: number) {
+  deleteProjectsResources(proID: number, recID: number) {
     // tslint:disable-next-line:prefer-const
-    let url = URL_SERVICIOS + '/HResources/' + pro_ID;
+    let url =  URL_SERVICIOS + '/ProjectsResources/?Pro_ID=' + proID + '&Rec_ID=' + recID;
     return this.http.delete(url)
     .pipe(map((resp: any) => resp));
   }

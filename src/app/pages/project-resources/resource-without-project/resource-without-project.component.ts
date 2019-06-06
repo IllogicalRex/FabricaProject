@@ -26,7 +26,6 @@ export class ResourceWithoutProjectComponent implements OnInit {
                   // Defaults to 0 if no query param provided.
                   this.pagination.numberPage = +params.numberPage;
                   this.pagination.sizeData = +params.sizeData;
-                  console.log(this.pagination.numberPage, this.pagination.sizeData);
                 });
                 // this.body.sizeData = SIZE_DATA;
               }
