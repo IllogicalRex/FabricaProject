@@ -18,6 +18,7 @@ export class NewProjectComponent implements OnInit {
 
   guardar() {
     this._project.guardarProyectos(this.project).subscribe((res: any) => {
+      console.log(res);
     });
     swal('Aviso', 'Registro guardado con exito', 'success');
   }

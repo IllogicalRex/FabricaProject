@@ -32,11 +32,17 @@ export class ProjectService {
         .pipe(map((resp: any) => resp));
   }
 
+  loadByFilters(filter: Project) {
+    // tslint:disable-next-line:prefer-const
+    let url = URL_SERVICIOS + '/project/ByFilter';
+    return this.http.post(url, filter);
+     // .pipe(map((res: Project) => res));
+  }
   // tslint:disable-next-line:variable-name
   cargarProyectosByID(pro_ID: number) {
     // tslint:disable-next-line:prefer-const
     let url = URL_SERVICIOS + '/project/byid/' + pro_ID;
-    return this.http.get(url)
+    this.http.get(url)
         .pipe(map((resp: any) => resp));
   }
 

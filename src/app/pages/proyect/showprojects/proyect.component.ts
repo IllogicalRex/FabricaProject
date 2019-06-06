@@ -22,6 +22,7 @@ export class ProyectComponent implements OnInit {
   header: string;
   pagination: Pagination = new Pagination();
   url: string;
+  searchPro: string;
   // tslint:disable-next-line:variable-name
   constructor(public _project: ProjectService,
               // tslint:disable-next-line:variable-name

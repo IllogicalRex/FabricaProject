@@ -16,15 +16,17 @@ export class SidebarComponent implements OnInit {
   url: string;
   // tslint:disable-next-line:variable-name
   constructor(public activateRoute: ActivatedRoute,
+              // tslint:disable-next-line:variable-name
+              public _project: ProjectService,
               public route: Router) {
               this.body.numberPage = 1;
               this.body.sizeData = SIZE_DATA;
-              console.log(this.body.sizeData);
       }
 
   ngOnInit() {
 
   }
+
 
 
 }
