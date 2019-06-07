@@ -4,6 +4,7 @@
         <div class="card ">
             <div class="card-header rounded">
                 {{header}}
+
                 <button type=" button " title="Craer un proyecto nuevo" [routerLink]="['/newproject']" class="btn waves-effect btn btn-secondary float-right">
                                 <span class="oi oi-plus"></span>
                                 Nuevo
@@ -12,17 +13,29 @@
             <div class="card-body">
                 <table class="table  table-hover" data-spy="scroll">
                     <thead class="thead-dark">
-                        <tr>
+                        <tr class="filters">
                             <th scope="col">ID</th>
                             <th scope="col">Name</th>
                             <th scope="col">StartDate</th>
                             <th scope="col">EndDate</th>
                             <th scope="col">ProyectLeader</th>
-                            <th scope="col"></th>
+                            <th scope="col">
+                                <div class="pull-right">
+                                    <button class="btn btn-default btn-xs btn-filter"><span class="fa fa-filter"></span> Filter</button>
+                                </div>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let pro of proyect">
+                        <tr>
+
+                            <td><input id="filter1" type="text" class="form-control" placeholder="" (keypress)="filter()"></td>
+                            <td><input id="filter2" type="text" class="form-control" placeholder="" (keypress)="filter()" (keydown)="prueba()"></td>
+                            <td><input id="filter3" type="text" class="form-control" placeholder="" (keypress)="filter()"></td>
+                            <td><input id="filter4" type="text" class="form-control" placeholder="" (keypress)="filter()"></td>
+                            <td><input id="filter5" type="text" class="form-control" placeholder="" (keypress)="filter()" (keydown)="prueba()"></td>
+                        </tr>
+                        <tr *ngFor="let pro of project">
 
                             <td>{{pro.pro_ID}} </td>
                             <td>{{pro.name}}</td>

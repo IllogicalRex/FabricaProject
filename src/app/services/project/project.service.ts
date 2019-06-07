@@ -42,7 +42,7 @@ export class ProjectService {
   cargarProyectosByID(pro_ID: number) {
     // tslint:disable-next-line:prefer-const
     let url = URL_SERVICIOS + '/project/byid/' + pro_ID;
-    this.http.get(url)
+    return this.http.get(url)
         .pipe(map((resp: any) => resp));
   }
 

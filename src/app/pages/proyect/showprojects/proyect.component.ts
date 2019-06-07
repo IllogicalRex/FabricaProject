@@ -1,4 +1,4 @@
-import { Component, OnInit, Pipe } from '@angular/core';
+import { Component, OnInit, Pipe, Injectable } from '@angular/core';
 import { ProjectService } from '../../../services/project/project.service';
 import Swal from 'sweetalert2';
 import { Project } from 'src/app/models/projects.model';
@@ -7,6 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ProjectsResourcesService } from 'src/app/services/projects-resources/projects-resources.service';
 import { Pagination } from 'src/app/models/pagination.model';
 import { SIZE_DATA } from '../../../config/constants';
+import { HeaderComponent } from '../../../shared/header/header.component';
 
 
 
@@ -17,12 +18,17 @@ import { SIZE_DATA } from '../../../config/constants';
   providers: [dateFormatPipe],
   styleUrls: []
 })
+@Injectable({
+  providedIn: 'root'
+})
 export class ProyectComponent implements OnInit {
-  proyect: Project;
+  project: Project;
+  search: Project = new Project();
   header: string;
   pagination: Pagination = new Pagination();
   url: string;
-  searchPro: string;
+
+  isEnabled: string;
   // tslint:disable-next-line:variable-name
   constructor(public _project: ProjectService,
               // tslint:disable-next-line:variable-name
@@ -39,6 +45,7 @@ export class ProyectComponent implements OnInit {
                  // this.url = '/project?numberPage=' + this.pagination.numberPage + '&sizeData=' + this.pagination.sizeData;
                 });
                 // this.body.sizeData = SIZE_DATA;
+                this.isEnabled = 'disabled';
               }
 
   ngOnInit() {
@@ -62,7 +69,7 @@ export class ProyectComponent implements OnInit {
 
   load() {
       this._project.cargarProyectosPage(this.pagination).subscribe((res: any) => {
-        this.proyect = res;
+        this.project = res;
         this.header = 'Proyectos';
       });
   }
@@ -89,6 +96,28 @@ export class ProyectComponent implements OnInit {
     this.ngOnInit();
   }
 
+  prueba() {
+    console.log('presionado');
+    this.search.name  = String((document.getElementById('filter2') as HTMLInputElement).value);
+    this.search.proyectLeader  = String((document.getElementById('filter5') as HTMLInputElement).value);
+    // console.log(this.project.name);
+    this._project.loadByFilters(this.search).subscribe((resp: Project) => {
+      this.project = resp;
+    });
+    if (this.search.name === '' || this.search.proyectLeader === '') {
+      this.load();
+    }
+  }
+
+  filter() {
+    // console.log('Tecla Presionada');
+    this.search.name  = String((document.getElementById('filter2') as HTMLInputElement).value);
+    this.search.proyectLeader  = String((document.getElementById('filter5') as HTMLInputElement).value);
+   // console.log(this.project.name);
+    this._project.loadByFilters(this.search).subscribe((resp: Project) => {
+      this.project = resp;
+    });
+  }
   // tslint:disable-next-line:variable-name
   deleteProject(pro_ID: number) {
     Swal.fire({
