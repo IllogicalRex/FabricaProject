@@ -18,6 +18,7 @@ import { ProjectResourcesComponent } from './project-resources/project-resources
 import { ProjectWithoutResourcesComponent } from './project-resources/project-without-resources/project-without-resources.component';
 import { AsignResourceComponent } from './project-resources/asign-resource/asign-resource.component';
 import { ResourceWithoutProjectComponent } from './project-resources/resource-without-project/resource-without-project.component';
+import { AsignProjectsComponent } from './project-resources/asign-projects/asign-projects.component';
 @NgModule({
   declarations: [
     PagesComponent,
@@ -32,7 +33,8 @@ import { ResourceWithoutProjectComponent } from './project-resources/resource-wi
     ProjectResourcesComponent,
     ProjectWithoutResourcesComponent,
     AsignResourceComponent,
-    ResourceWithoutProjectComponent
+    ResourceWithoutProjectComponent,
+    AsignProjectsComponent
   ],
   imports: [
     CommonModule,

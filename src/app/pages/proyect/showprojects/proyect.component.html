@@ -29,11 +29,11 @@
                     <tbody>
                         <tr>
 
-                            <td><input id="filter1" type="text" class="form-control" placeholder="" (keypress)="filter()"></td>
-                            <td><input id="filter2" type="text" class="form-control" placeholder="" (keypress)="filter()" (keydown)="prueba()"></td>
-                            <td><input id="filter3" type="text" class="form-control" placeholder="" (keypress)="filter()"></td>
-                            <td><input id="filter4" type="text" class="form-control" placeholder="" (keypress)="filter()"></td>
-                            <td><input id="filter5" type="text" class="form-control" placeholder="" (keypress)="filter()" (keydown)="prueba()"></td>
+                            <td><input id="filter1" type="text" class="form-control" placeholder=""></td>
+                            <td><input id="filter2" type="text" class="form-control" placeholder="" (keyup)="filter()"></td>
+                            <td><input id="filter3" type="text" class="form-control" placeholder=""></td>
+                            <td><input id="filter4" type="text" class="form-control" placeholder=""></td>
+                            <td><input id="filter5" type="text" class="form-control" placeholder="" (keyup)="filter()"></td>
                         </tr>
                         <tr *ngFor="let pro of project">
 
@@ -74,4 +74,5 @@
             </div>
         </div>
     </div>
+
 </section>

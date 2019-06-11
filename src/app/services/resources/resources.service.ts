@@ -27,13 +27,19 @@ export class ResourceService {
   }
 
   // tslint:disable-next-line:variable-name
-  cargarResourceByID(pro_ID: number) {
+  loadResourceByID(rec_ID: number) {
     // tslint:disable-next-line:prefer-const
-    let url = URL_SERVICIOS + '/HResources/' + pro_ID;
+    let url = URL_SERVICIOS + '/HResources/ByID/' + rec_ID;
     return this.http.get(url)
         .pipe(map((resp: any) => resp));
   }
 
+  loadByFilters(filter: Resource) {
+    // tslint:disable-next-line:prefer-const
+    let url = URL_SERVICIOS + '/hresource/ByFilter';
+    return this.http.post(url, filter);
+     // .pipe(map((res: Project) => res));
+  }
 
 
   saveResource(resource: Resource) {

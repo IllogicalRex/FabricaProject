@@ -1,4 +1,4 @@
-import { Component, OnInit, Pipe, Injectable } from '@angular/core';
+import { Component, OnInit, Pipe, Injectable, HostListener } from '@angular/core';
 import { ProjectService } from '../../../services/project/project.service';
 import Swal from 'sweetalert2';
 import { Project } from 'src/app/models/projects.model';
@@ -27,7 +27,8 @@ export class ProyectComponent implements OnInit {
   header: string;
   pagination: Pagination = new Pagination();
   url: string;
-
+  currentkeyName = '';
+  currentkeyProjectLeader = '';
   isEnabled: string;
   // tslint:disable-next-line:variable-name
   constructor(public _project: ProjectService,
@@ -46,26 +47,12 @@ export class ProyectComponent implements OnInit {
                 });
                 // this.body.sizeData = SIZE_DATA;
                 this.isEnabled = 'disabled';
+
               }
 
   ngOnInit() {
     this.load();
   }
-
-  /* load() {
-    if ( this.router.url === this.url) {
-      this._project.cargarProyectosPage(this.pagination).subscribe((res: any) => {
-        this.proyect = res;
-        this.header = 'Proyectos';
-      });
-    } else
-    if ( this.router.url === '/projectwhitoutrec' ) {
-      this._proResService.loadProjectsWithoutResources().subscribe((res: any) => {
-        this.proyect = res;
-        this.header = 'Proyectos sin recursos asignados';
-      });
-    }
-  } */
 
   load() {
       this._project.cargarProyectosPage(this.pagination).subscribe((res: any) => {
@@ -96,28 +83,23 @@ export class ProyectComponent implements OnInit {
     this.ngOnInit();
   }
 
-  prueba() {
-    console.log('presionado');
-    this.search.name  = String((document.getElementById('filter2') as HTMLInputElement).value);
-    this.search.proyectLeader  = String((document.getElementById('filter5') as HTMLInputElement).value);
-    // console.log(this.project.name);
-    this._project.loadByFilters(this.search).subscribe((resp: Project) => {
-      this.project = resp;
-    });
-    if (this.search.name === '' || this.search.proyectLeader === '') {
-      this.load();
-    }
+  filterById() {
+
   }
 
   filter() {
-    // console.log('Tecla Presionada');
-    this.search.name  = String((document.getElementById('filter2') as HTMLInputElement).value);
-    this.search.proyectLeader  = String((document.getElementById('filter5') as HTMLInputElement).value);
-   // console.log(this.project.name);
+  //  console.log(event.key.lastIndexOf);
+    this.search.name = String((document.getElementById('filter2') as HTMLInputElement).value);
+    this.search.proyectLeader = String((document.getElementById('filter5') as HTMLInputElement).value);
+    if (this.search.name.length < 0  || this.search.proyectLeader.length < 0 ) {
+      this.load();
+      return;
+    }
     this._project.loadByFilters(this.search).subscribe((resp: Project) => {
       this.project = resp;
     });
   }
+
   // tslint:disable-next-line:variable-name
   deleteProject(pro_ID: number) {
     Swal.fire({

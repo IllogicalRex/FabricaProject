@@ -46,6 +46,14 @@ export class ProjectService {
         .pipe(map((resp: any) => resp));
   }
 
+  // tslint:disable-next-line:variable-name
+  loadResourcesByID(rec_ID: number) {
+    // tslint:disable-next-line:prefer-const
+    let url = URL_SERVICIOS + '/HResources/byid/' + rec_ID;
+    return this.http.get(url)
+        .pipe(map((resp: any) => resp));
+  }
+
 
 
   guardarProyectos(project: Project) {

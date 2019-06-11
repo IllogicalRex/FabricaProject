@@ -3,10 +3,6 @@
         <div class="card ">
             <div class="card-header rounded">
                 Recursos sin proyectos asignados
-                <button type=" button " title="Craer un recurso nuevo" [routerLink]="['/newrec']" class="btn waves-effect btn btn-secondary float-right">
-                  <span class="oi oi-plus"></span>
-                  Nuevo
-              </button>
             </div>
             <div class="card-body">
                 <table class="table  table-hover" data-spy="scroll">
@@ -21,6 +17,13 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td><input id="filter1" type="text" class="form-control" placeholder="" (keyup)="filter()"></td>
+                            <td><input id="filter2" type="text" class="form-control" placeholder="" (keyup)="filter()"></td>
+                            <td><input id="filter3" type="text" class="form-control" placeholder="" (keyup)="filter()"></td>
+                            <td><input id="filter4" type="text" class="form-control" placeholder="" (keyup)="filter()"></td>
+                            <td><input id="filter5" type="text" class="form-control" placeholder="" (keyup)="filter()"></td>
+                        </tr>
                         <tr *ngFor="let rec of resource">
 
                             <td>{{rec.rec_ID}}</td>
@@ -30,7 +33,7 @@
                             <td>{{rec.email}}</td>
                             <td>
                                 <div class="text-right">
-                                    <button type=" button " title="Eliminar proyecto" class="btn waves-effect btn ">
+                                    <button type=" button " title="Eliminar proyecto" class="btn waves-effect btn " [routerLink]="['/asignpro', rec.rec_ID]">
                                         <span class="oi oi-plus"></span>Asingar proyecto
                                     </button>
                                 </div>

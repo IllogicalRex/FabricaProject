@@ -48,7 +48,7 @@ export class UpdateResourceComponent implements OnInit {
   }
 
   loadById() {
-    this._resource.cargarResourceByID(this.id).subscribe((res: any) => {
+    this._resource.loadResourceByID(this.id).subscribe((res: any) => {
       this.resource = res;
       console.log(res);
     });
